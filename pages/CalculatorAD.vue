@@ -1,175 +1,103 @@
 /* eslint-disable no-console */
 <template>
-  <v-card
-    justify="center"
-    align="center"
-    class="pb-4"
-    min-height="450px"
-    height="auto"
-    width="550px"
-    elevation="5"
-  >
-    <v-row
-      justify="center"
-      align="center"
-      no-gutters
-      style="height: 150px;"
-    >
-      <v-col
-        cols="8"
-        sm="8"
-      >
+  <div dropzone="true">
+    <v-card draggable="true" color="#3d3d3d" class="calculator">
+      <div class="display">
         <v-text-field
           v-model="display"
           outlined
           label="Calculator"
+          background-color="#858585"
         />
-        <v-btn
-          color="yellow darken-4"
-          elevation="6"
-          x-large
-          @click="number('1')"
-        >
-          1
-        </v-btn>
-        <v-btn
-          color="yellow darken-4"
-          elevation="6"
-          x-large
-          @click="number('2')"
-        >
-          2
-        </v-btn>
-        <v-btn
-          color="yellow darken-4"
-          elevation="6"
-          x-large
-          @click="number('3')"
-        >
-          3
-        </v-btn>
-        <v-btn
-          elevation="6"
-          x-large
-          color="success"
-          @click="add"
-        >
-          +
-        </v-btn>
-        <v-btn
-          color="yellow darken-4"
-          elevation="6"
-          x-large
-          @click="number('4')"
-        >
-          4
-        </v-btn>
-        <v-btn
-          color="yellow darken-4"
-          elevation="6"
-          x-large
-          @click="number('5')"
-        >
-          5
-        </v-btn>
-        <v-btn
-          color="yellow darken-4"
-          elevation="6"
-          x-large
-          @click="number('6')"
-        >
-          6
-        </v-btn>
-        <v-btn
-          elevation="6"
-          x-large
-          color="success"
-          @click="Sub"
-        >
-          -
-        </v-btn>
-        <v-btn
-          color="yellow darken-4"
-          elevation="6"
-          x-large
-          @click="number('7')"
-        >
-          7
-        </v-btn>
-        <v-btn
-          color="yellow darken-4"
-          elevation="6"
-          x-large
-          @click="number('8')"
-        >
-          8
-        </v-btn>
-        <v-btn
-          color="yellow darken-4"
-          elevation="6"
-          x-large
-          @click="number('9')"
-        >
-          9
-        </v-btn>
-        <v-btn
-          elevation="6"
-          x-large
-          color="success"
-          @click="div"
-        >
-          /
-        </v-btn>
-        <v-btn
-          color="orange darken-4"
-          elevation="6"
-          x-large
-          style="width: 285px"
-          @click="'0'"
-        >
-          0
-        </v-btn>
-        <v-btn
-          elevation="6"
-          x-large
-          color="success"
-          @click="mul"
-        >
-          x
-        </v-btn>
-        <v-btn
-          color="error"
-          x-large
-          @click="clear"
-        >
+      </div>
+      <div class="clear">
+        <v-btn color="#fc5203" @click="clear">
           Clear
         </v-btn>
-      </v-col>
-      <v-text-field
-        v-model="result"
-        label="Result"
-        color=""
-      />
+      </div>
       <div>
-        <v-btn
-          color="success"
-          x-small
-          @click="give"
-        >
-          ok
+        <v-btn color="#9cff45" @click="div">
+          /
         </v-btn>
       </div>
-    </v-row>
-  </v-card>
+      <div>
+        <v-btn color="#888888" @click="number('1')">
+          1
+        </v-btn>
+      </div>
+      <div>
+        <v-btn color="#888888" @click="number('2')">
+          2
+        </v-btn>
+      </div>
+      <div>
+        <v-btn color="#888888" @click="number('3')">
+          3
+        </v-btn>
+      </div>
+      <div>
+        <v-btn color="#9cff45" @click="add">
+          +
+        </v-btn>
+      </div>
+      <div>
+        <v-btn color="#888888" @click="number('4')">
+          4
+        </v-btn>
+      </div>
+      <div>
+        <v-btn color="#888888" @click="number('5')">
+          5
+        </v-btn>
+      </div>
+      <div>
+        <v-btn color="#888888" @click="number('6')">
+          6
+        </v-btn>
+      </div>
+      <div>
+        <v-btn color="#9cff45" @click="Sub">
+          -
+        </v-btn>
+      </div>
+      <div>
+        <v-btn color="#888888" @click="number('7')">
+          7
+        </v-btn>
+      </div>
+      <div>
+        <v-btn color="#888888" @click="number('8')">
+          8
+        </v-btn>
+      </div>
+      <div>
+        <v-btn color="#888888" @click="number('9')">
+          9
+        </v-btn>
+      </div>
+      <div>
+        <v-btn color="#9cff45" @click="mul">
+          x
+        </v-btn>
+      </div>
+      <div class="zero">
+        <v-btn color="#888888" @click="number('0')">
+          0
+        </v-btn>
+      </div>
+      <div>
+        <v-btn color="#9cff45" @click="give">
+          =
+        </v-btn>
+      </div>
+    </v-card>
+  </div>
 </template>
 <script>
 export default {
   data: () => ({
     display: '',
     result: ''
-  }),
-  watch: () => ({
-    display: (value) => { console.log(this.display) }
   }),
   methods: {
     number (val) {
@@ -196,3 +124,21 @@ export default {
   }
 }
 </script>
+<style scoped>
+.calculator{
+  margin: auto;
+  width: 400px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(50px, auto);
+}
+.display {
+  grid-column: 1/5;
+}
+.clear {
+  grid-column: 1/4;
+}
+.zero {
+ grid-column: 1/4;
+}
+</style>
