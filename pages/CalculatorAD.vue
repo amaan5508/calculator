@@ -86,7 +86,7 @@
         </v-btn>
       </div>
       <div>
-        <v-btn color="#9cff45" @click="give">
+        <v-btn color="#9cff45" @click="equals">
           =
         </v-btn>
       </div>
@@ -97,18 +97,24 @@
 export default {
   data: () => ({
     display: '',
-    result: ''
+    result: '',
+    getNumber: '',
+    readInput: []
   }),
   methods: {
     number (val) {
+      this.getNumber = this.getNumber + val
       this.display = this.display + val
     },
     clear () {
       this.display = ''
       this.result = ''
+      this.getNumber = ''
     },
     add () {
+      this.readInput.push(this.getNumber)
       this.display = this.display + '+'
+      this.getNumber = ''
     },
     Sub () {
       this.display = this.display + '-'
@@ -119,7 +125,14 @@ export default {
     div () {
       this.display = this.display + '/'
     },
-    give () {
+    equals () {
+      this.result = ''
+      this.readInput.push(this.getNumber)
+      this.readInput.forEach((input) => {
+        this.result = Number(this.result) + Number(input)
+        this.display = '=' + this.result.toString()
+        this.readInput = []
+      })
     }
   }
 }
